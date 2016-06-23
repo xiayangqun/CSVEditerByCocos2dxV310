@@ -1,0 +1,23 @@
+<Solution>
+  <PropertyGroup Name="CSVEditerByCocos2dxV310" Version="3.10.0.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="CSBFile">
+          <Project Name="editButtonBar.csd" Type="Node" />
+          <Project Name="editCommendTool.csd" Type="Node" />
+          <Project Name="simplePage.csd" Type="Node" />
+          <Project Name="MainScene.csd" Type="Node" />
+        </Folder>
+        <Folder Name="Res">
+          <TTF Name="arial.ttf" />
+          <Image Name="bg_normally.png" />
+          <Image Name="bg_pop1.png" />
+          <Image Name="button.png" />
+          <Image Name="editBox.png" />
+          <Image Name="face.jpg" />
+        </Folder>
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>
