@@ -86,6 +86,12 @@
     <ClInclude Include="..\Classes\SimplePage.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\dirent.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\unistd.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

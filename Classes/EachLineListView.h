@@ -1,4 +1,4 @@
-//
+﻿//
 //  EachLineListView.hpp
 //  CSVConfig
 //

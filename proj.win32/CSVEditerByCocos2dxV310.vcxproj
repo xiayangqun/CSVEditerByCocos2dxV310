@@ -164,11 +164,13 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\CSVDefaultKeyConfig.h" />
     <ClInclude Include="..\Classes\CSVGlobalConfig.h" />
     <ClInclude Include="..\Classes\DefaultValueItem.h" />
+    <ClInclude Include="..\Classes\dirent.h" />
     <ClInclude Include="..\Classes\EachLineListView.h" />
     <ClInclude Include="..\Classes\EachLineWidget.h" />
     <ClInclude Include="..\Classes\MainScene.h" />
     <ClInclude Include="..\Classes\SelectPage.h" />
     <ClInclude Include="..\Classes\SimplePage.h" />
+    <ClInclude Include="..\Classes\unistd.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

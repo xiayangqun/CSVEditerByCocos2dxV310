@@ -1,4 +1,4 @@
-//
+﻿//
 //  createNewCSVScene.hpp
 //  CSVConfig
 //
