@@ -8,6 +8,7 @@
           <Project Name="editCommendTool.csd" Type="Node" />
           <Project Name="simplePage.csd" Type="Node" />
           <Project Name="MainScene.csd" Type="Node" />
+          <Project Name="Node.csd" Type="Node" />
         </Folder>
         <Folder Name="Res">
           <TTF Name="arial.ttf" />

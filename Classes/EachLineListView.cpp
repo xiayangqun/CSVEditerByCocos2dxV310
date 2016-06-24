@@ -30,10 +30,13 @@ bool EachLineListVew::initWithFileName(const std::string& fileName)
         return false;
     
     listView=ListView::create();
-    listView->setContentSize(Size(Director::getInstance()->getVisibleSize().width, Director::getInstance()->getVisibleSize().height-150));
+    listView->setBackGroundImage("button.png");
+    listView->setBackGroundImageScale9Enabled(true);
+    listView->setContentSize(Size(Director::getInstance()->getVisibleSize().width, Director::getInstance()->getVisibleSize().height-110));
     listView->setAnchorPoint(Vec2::ZERO);
     listView->setPosition(Vec2(0,100));
     listView->setBounceEnabled(true);
+  
     addChild(listView);
     
 
@@ -73,9 +76,9 @@ bool EachLineListVew::initWithFileName(const std::string& fileName)
     addChild(button);
     
     
-    fileNameEditBox=ui::EditBox::create(Size(400,50), Scale9Sprite::create("button.png"));
-    fileNameEditBox->setPosition(Vec2(500,60));
-    fileNameEditBox->setPlaceHolder("在这里输入保存的文件名字");
+    fileNameEditBox=ui::EditBox::create(Size(450,50), Scale9Sprite::create("button.png"));
+    fileNameEditBox->setPosition(Vec2(470,60));
+    fileNameEditBox->setPlaceHolder("在这里输入保存的文件名");
     addChild(fileNameEditBox);
     
     

@@ -28,5 +28,17 @@
         <LastRunType Value="Mac" />
       </Value>
     </Item>
+    <Item Key="TabsParamsKey">
+      <Value ctype="TabsInfo">
+        <OpenedDocuments>
+          <FilePathData Path="CSBFile/editCommendTool.csd" />
+          <FilePathData Path="CSBFile/MainScene.csd" />
+          <FilePathData Path="CSBFile/simplePage.csd" />
+          <FilePathData Path="CSBFile/editButtonBar.csd" />
+          <FilePathData Path="CSBFile/Node.csd" />
+        </OpenedDocuments>
+        <ActiveDocument Path="CSBFile/Node.csd" />
+      </Value>
+    </Item>
   </Properties>
 </UserData>
