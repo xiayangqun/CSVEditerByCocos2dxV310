@@ -66,16 +66,17 @@ std::vector<std::string> CSVGlobalConfig::getSubFileNameByFullPath(const std::st
     int i=0;
     
     dp=opendir(fullPath.c_str());
-    chdir(fullPath.c_str());
+    //chdir(fullPath.c_str());
     while((entry=readdir(dp))!=NULL&&i<255)
     {
         stat(entry->d_name,&statbuf);
-        if(S_ISREG(statbuf.st_mode)||S_ISDIR(statbuf.st_mode)  )
-        {
+
+       // if(S_ISREG(statbuf.st_mode)||S_ISDIR(statbuf.st_mode)  )
+        //{
             std::string str=entry->d_name;
             if( str!="GlobalConfig.csv"&& str!="CSVDefaultKeyConfig.csv"&&str[0]!='.')
                 retVec.push_back(entry->d_name);
-        }
+       // }
     }
 
     return retVec;

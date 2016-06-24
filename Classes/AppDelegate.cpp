@@ -42,7 +42,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 #if CC_TARGET_PLATFORM==CC_PLATFORM_WIN32
     //Set Win FrameSize
-    
+	glview->setFrameSize(1280, 720);
 #endif
     
     // turn on display FPS
