@@ -22,7 +22,12 @@ EachLineWiget * EachLineWiget::createWithButtonTitle( std::vector<std::string> b
 
 EachLineWiget *  EachLineWiget::createWithButtonValue(std::vector<std::string> buttonValueOption,int newIdex)
 {
+    
     auto buttonTitleOption=CSVGlobalConfig::getInstance()->getLineOptions(buttonValueOption[0]);
+    while (buttonValueOption.size()<buttonTitleOption.size()) {
+        buttonValueOption.push_back("");
+    }
+    
     return EachLineWiget::createWithButtonTitleAndValue(buttonTitleOption, buttonValueOption,newIdex);
 }
 

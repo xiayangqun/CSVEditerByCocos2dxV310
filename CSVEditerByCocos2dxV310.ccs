@@ -7,8 +7,8 @@
           <Project Name="editButtonBar.csd" Type="Node" />
           <Project Name="editCommendTool.csd" Type="Node" />
           <Project Name="MainScene.csd" Type="Node" />
-          <Project Name="simplePage.csd" Type="Node" />
           <Project Name="MainSceneV2.csd" Type="Node" />
+          <Project Name="simplePage.csd" Type="Node" />
         </Folder>
         <Folder Name="Res">
           <TTF Name="arial.ttf" />
