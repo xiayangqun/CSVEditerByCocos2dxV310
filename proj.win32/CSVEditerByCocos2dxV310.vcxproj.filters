@@ -18,7 +18,34 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+    <ClCompile Include="..\Classes\CCSVParse.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\createNewCSVScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CSVDefaultKeyConfig.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CSVGlobalConfig.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\DefaultValueItem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EachLineListView.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EachLineWidget.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MainScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SelectPage.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SimplePage.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,7 +56,34 @@
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
+    <ClInclude Include="..\Classes\CCSVParse.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\createNewCSVScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CSVDefaultKeyConfig.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CSVGlobalConfig.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DefaultValueItem.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EachLineListView.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EachLineWidget.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MainScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SelectPage.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SimplePage.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

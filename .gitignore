@@ -153,3 +153,7 @@ tests/cpp-tests/Resources/audio
 /*/*/*/prebuilt-mk/Android.mk
 /*/*/*/*/prebuilt-mk/Android.mk
 *.xcscmblueprint
+proj.win8.1-universal/
+proj.android-studio/
+proj.android/
+proj.win10/
