@@ -21,14 +21,12 @@ class CreateNewCSVScene: public Layer
 {
     
 public:
-    static Scene * getSceenByName(const std::string& fileName);
-    static CreateNewCSVScene * createWithFileName(const std::string& fileName);
+    static Scene * getSceenByName(const std::string& fileName,const std::string& dirName);
+    static CreateNewCSVScene * createWithFileName(const std::string& fileName, const std::string& dirName);
     
 protected:
-    bool initWithFileName(const std::string& fileName);
-    
+    bool initWithFileName(const std::string& fileName, const std::string& dirName);
     EachLineListVew * listView;
-
 };
 
 

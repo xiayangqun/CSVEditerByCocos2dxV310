@@ -20,15 +20,22 @@ CSVDefaultKeyConfig * CSVDefaultKeyConfig::getInstance()
 
 std::vector<std::string>  CSVDefaultKeyConfig::getDefaultByKey(const std::string& key)
 {
-    if(defaultValueMap.find(key)==defaultValueMap.end())
-        defaultValueMap.insert(std::make_pair(key, std::vector<std::string>()));
+    static std::vector<std::string>  emptyVec;
     
-    return defaultValueMap.at(key);
+    if(defaultValueMap.find(key)!=defaultValueMap.end())
+        return defaultValueMap.at(key);
+    else
+        return emptyVec;
+    
 }
 
 
 void CSVDefaultKeyConfig::pushNewDefaultValue(const std::string& key ,  const std::string& defaultValue , const std::string& defaultDes)
 {
+    
+    if(key=="" || defaultValue=="")
+        return;
+    
     if(defaultValueMap.find(key)==defaultValueMap.end())
         defaultValueMap.insert(std::make_pair(key, std::vector<std::string>()));
     
@@ -36,6 +43,8 @@ void CSVDefaultKeyConfig::pushNewDefaultValue(const std::string& key ,  const st
     vectorString.push_back(defaultValue+"@"+defaultDes);
     
 }
+
+
 void CSVDefaultKeyConfig::deleteDefaultValue(const std::string&key , const std::string& deleteValue, const std::string& defaultDes)
 {
     
@@ -57,10 +66,14 @@ void CSVDefaultKeyConfig::deleteDefaultValue(const std::string&key , const std::
 
 bool  CSVDefaultKeyConfig::loadFromFile()
 {
-    if(FileUtils::getInstance()->isFileExist("CSVDefaultKeyConfig.csv")==false)
+    
+    defaultValueMap.clear();
+    
+    auto fullKeyFileNamePath=FileUtils::getInstance()->getWritablePath()+currentDirName+"/CSVDefaultKeyConfig.csv";
+    if(FileUtils::getInstance()->isFileExist(fullKeyFileNamePath)==false)
         return false;
     
-    openFile("CSVDefaultKeyConfig.csv");
+    openFile(fullKeyFileNamePath.c_str());
     
     for(auto lineDefaultKeyConfig : data)
     {
@@ -80,6 +93,8 @@ bool  CSVDefaultKeyConfig::loadFromFile()
 void CSVDefaultKeyConfig::saveFile()
 {
     
+    if(defaultValueMap.size()==0) return;
+    
     std::string WriteStr;
     
     for(auto& item: defaultValueMap)
@@ -98,14 +113,21 @@ void CSVDefaultKeyConfig::saveFile()
         WriteStr=WriteStr+lineStr;
     }
     
-    std::string fullPath=FileUtils::getInstance()->getWritablePath()+"CSVDefaultKeyConfig.csv";
+    std::string fullPath=FileUtils::getInstance()->getWritablePath()+currentDirName+"/CSVDefaultKeyConfig.csv";
     FileUtils::getInstance()->writeStringToFile(WriteStr, fullPath);
-    CCLOG("fullPath :%s",fullPath.c_str());
+    //CCLOG("fullPath :%s",fullPath.c_str());
 }
+
+void CSVDefaultKeyConfig::changeDirName(const std::string& dirName)
+{
+    saveFile();
+    currentDirName=dirName;
+    loadFromFile();
+}
+
 
 
 CSVDefaultKeyConfig::CSVDefaultKeyConfig()
 {
-    loadFromFile();
 }
 

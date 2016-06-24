@@ -1,7 +1,7 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
 #include "CSVGlobalConfig.h"
 #include "CSVDefaultKeyConfig.h"
+#include "MainScene.h"
 
 USING_NS_CC;
 
@@ -58,12 +58,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
   
     CCLOG("fullPath:%s",wirtePath.c_str());
     
+    
+    
     CSVGlobalConfig::getInstance();
     CSVDefaultKeyConfig::getInstance();
     
     
+    //auto ret=CSVGlobalConfig::getInstance()->getSubFileNameByFullPath(wirtePath);
+    
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene =MainScene::createScene();
 
     // run
     director->runWithScene(scene);

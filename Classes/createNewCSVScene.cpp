@@ -9,10 +9,10 @@
 #include "createNewCSVScene.h"
 
 
-Scene * CreateNewCSVScene::getSceenByName(const std::string& fileName)
+Scene * CreateNewCSVScene::getSceenByName(const std::string& fileName,const std::string& dirName)
 {
     auto scene=Scene::create();
-    auto layer=CreateNewCSVScene::createWithFileName(fileName);
+    auto layer=CreateNewCSVScene::createWithFileName(fileName,dirName);
     scene->addChild(layer);
     
     return scene;
@@ -20,10 +20,10 @@ Scene * CreateNewCSVScene::getSceenByName(const std::string& fileName)
 }
 
 
-CreateNewCSVScene *  CreateNewCSVScene::createWithFileName(const std::string& fileName)
+CreateNewCSVScene *  CreateNewCSVScene::createWithFileName(const std::string& fileName,const std::string& dirName)
 {
     auto ptr=new (std::nothrow)  CreateNewCSVScene();
-    if(ptr&&ptr->initWithFileName(fileName))
+    if(ptr&&ptr->initWithFileName(fileName,dirName))
     {
         ptr->autorelease();
         return ptr;
@@ -34,13 +34,13 @@ CreateNewCSVScene *  CreateNewCSVScene::createWithFileName(const std::string& fi
 }
 
 
-bool CreateNewCSVScene::initWithFileName(const std::string& fileName)
+bool CreateNewCSVScene::initWithFileName(const std::string& fileName,const std::string& dirName)
 {
     if(!Layer::init())
         return false;
 
     
-    listView=EachLineListVew::createWithFileName(fileName);
+    listView=EachLineListVew::createWithFileName(fileName , dirName);
     listView->setPosition(Vec2::ZERO);
     addChild(listView);
     

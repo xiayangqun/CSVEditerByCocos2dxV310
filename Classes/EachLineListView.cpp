@@ -7,12 +7,12 @@
 //
 
 #include "EachLineListView.h"
-#include "HelloWorldScene.h"
+#include "MainScene.h"
 
-EachLineListVew * EachLineListVew::createWithFileName(const std::string& fileName)
+EachLineListVew * EachLineListVew::createWithFileName(const std::string& fileName,const std::string& dirName)
 {
     auto ptr=new EachLineListVew();
-    if(ptr&&ptr->initWithFileName(fileName))
+    if(ptr&&ptr->initWithFileName(fileName,dirName))
     {
         ptr->autorelease();
         return ptr;
@@ -24,10 +24,12 @@ EachLineListVew * EachLineListVew::createWithFileName(const std::string& fileNam
 }
 
 
-bool EachLineListVew::initWithFileName(const std::string& fileName)
+bool EachLineListVew::initWithFileName(const std::string& fileName,  const std::string& dirName)
 {
     if(!Node::init())
         return false;
+    
+    currentDirName=dirName;
     
     listView=ListView::create();
     listView->setBackGroundImage("button.png");
@@ -39,30 +41,6 @@ bool EachLineListVew::initWithFileName(const std::string& fileName)
   
     addChild(listView);
     
-
-    if(fileName!="")
-    {
-        if(FileUtils::getInstance()->isFileExist(fileName))
-        {
-            CCSVParse pr;
-            pr.openFile(fileName.c_str());
-            
-            for(int i=0;i<pr.data.size();i++)
-            {
-                auto lineDate=pr.data[i];
-                lineDate.erase(lineDate.begin());
-                auto item=EachLineWiget::createWithButtonValue(lineDate, i+1);
-                item->onUpOrDeleteCall=CC_CALLBACK_2(EachLineListVew::onUpOrDelete,this);
-                listView->pushBackCustomItem(item);
-            }
-            
-        }
-        else
-        {
-            MessageBox("在指定目录下没有找到需要修改的CSV文件", "出错了");
-        }
-    }
-
     
     auto button=ui::Button::create("button.png");
     button->setTitleFontSize(30);
@@ -99,13 +77,40 @@ bool EachLineListVew::initWithFileName(const std::string& fileName)
     button3->setTitleColor(Color3B::RED);
     button3->setScale9Enabled(true);
     button3->setContentSize(Size(280,50));
-    button3->setTitleText("返回(别忘记了保存你的文件)");
+    button3->setTitleText("返回("+currentDirName+")");
     button3->setPositionX(1100);
     button3->setPositionY(60);
-    button3->addClickEventListener([](Ref * sender){
-        Director::getInstance()->replaceScene(HelloWorld::createScene());
+    button3->addClickEventListener([&](Ref * sender){
+        Director::getInstance()->replaceScene(MainScene::createScene(currentDirName));
     });
     addChild(button3);
+
+    if(fileName!="")
+    {
+        auto fullFileName=FileUtils::getInstance()->getWritablePath()+currentDirName+"/"+fileName;
+        if(FileUtils::getInstance()->isFileExist(fullFileName))
+        {
+            CCSVParse pr;
+            pr.openFile(fullFileName.c_str());
+            
+            for(int i=0;i<pr.data.size();i++)
+            {
+                auto lineDate=pr.data[i];
+                lineDate.erase(lineDate.begin());
+                auto item=EachLineWiget::createWithButtonValue(lineDate, i+1);
+                item->onUpOrDeleteCall=CC_CALLBACK_2(EachLineListVew::onUpOrDelete,this);
+                listView->pushBackCustomItem(item);
+            }
+            
+            fileNameEditBox->setText(fileName.c_str());
+        }
+        else
+        {
+
+            MessageBox(fullFileName.c_str(), "在指定目录下没有找到需要修改的CSV文件");
+        }
+    }
+
     
     
     return true;
@@ -133,7 +138,7 @@ void EachLineListVew::onButtonClickToSaveCSVFile(Ref * sender)
     else
     {
         auto writeString=getCSVString();
-        auto fullPath=FileUtils::getInstance()->getWritablePath()+ fileNameEditBox->getText();
+        auto fullPath=FileUtils::getInstance()->getWritablePath()+currentDirName+"/"+fileNameEditBox->getText();
         FileUtils::getInstance()->writeStringToFile(writeString, fullPath);
         MessageBox(fullPath.c_str(), "文件已经保存");
     }

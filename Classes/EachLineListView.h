@@ -21,21 +21,17 @@ class EachLineListVew:public Node
 {
 
 public:
-    static EachLineListVew * createWithFileName(const std::string& fileName);
+    static EachLineListVew * createWithFileName(const std::string& fileName, const std::string& driName);
     
 protected:
-    bool initWithFileName(const std::string& fileName);
+    bool initWithFileName(const std::string& fileName, const std::string& driName );
     std::string getCSVString();
-    
-    
-                             
-    
-    
-    
+
 protected:
     ui::ListView * listView;
     ui::EditBox * fileNameEditBox;
     
+    std::string currentDirName;
     
     void onButtonClickToAddLine(Ref * sender);
     void onButtonClickToSaveCSVFile(Ref * sender);
