@@ -40,6 +40,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setOpenGLView(glview);
     }
 
+#if CC_TARGET_PLATFORM==CC_PLATFORM_WIN32
+    //Set Win FrameSize
+    
+#endif
+    
     // turn on display FPS
     //director->setDisplayStats(true);
 
