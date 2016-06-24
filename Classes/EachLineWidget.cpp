@@ -169,11 +169,13 @@ void EachLineWiget::updateButtonsLabel()
         if(buttonValuesNames[i]=="")
         {
             buttonsVector[i]->setTitleColor(Color3B::WHITE);
+            buttonsVector[i]->setOpacity(150);
             buttonsVector[i]->setTitleText(buttonTitleNames[i]);
         }
         else
         {
             buttonsVector[i]->setTitleColor(Color3B::GREEN);
+             buttonsVector[i]->setOpacity(255);
             buttonsVector[i]->setTitleText(buttonValuesNames[i]);
         }
         

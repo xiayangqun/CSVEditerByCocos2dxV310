@@ -56,7 +56,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->addSearchPath("res/Default");
     FileUtils::getInstance()->addSearchPath("res/CSBFile");
   
- 
+    CCLOG("fullPath:%s",wirtePath.c_str());
     
     CSVGlobalConfig::getInstance();
     CSVDefaultKeyConfig::getInstance();
