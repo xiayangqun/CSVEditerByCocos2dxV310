@@ -12,9 +12,9 @@
 #include <stdio.h>
 #include "CCSVParse.h"
 
-#include <sys/stat.h>
-#include "dirent.h"
-#include "unistd.h"
+
+
+
 
 class CSVGlobalConfig:public CCSVParse
 {
@@ -26,8 +26,12 @@ protected:
     static CSVGlobalConfig * instance;
     CSVGlobalConfig();
 
-    
-    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+public:
+
+	static  string GBKToUTF8(const std::string& strGBK);
+	static  string UTF8ToGBK(const std::string& strUTF8);
+#endif
     
 public:
     
