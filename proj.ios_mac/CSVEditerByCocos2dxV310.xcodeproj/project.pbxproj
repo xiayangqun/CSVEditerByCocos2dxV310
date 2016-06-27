@@ -63,6 +63,7 @@
 		B49C9F1D1D1ACBD800F9108B /* CSVGlobalConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B49C9F151D1ACBD800F9108B /* CSVGlobalConfig.cpp */; };
 		B49C9F1E1D1ACBD800F9108B /* EachLineListView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B49C9F171D1ACBD800F9108B /* EachLineListView.cpp */; };
 		B49C9F1F1D1ACBD800F9108B /* EachLineWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B49C9F191D1ACBD800F9108B /* EachLineWidget.cpp */; };
+		B4BF4CAB1D20C0C30015A0AF /* UTF8World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B4BF4CA91D20C0C30015A0AF /* UTF8World.cpp */; };
 		B4D5785B1D1B73330011310C /* CSVDefaultKeyConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B4D578591D1B73330011310C /* CSVDefaultKeyConfig.cpp */; };
 		B4D5785E1D1B842C0011310C /* SelectPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B4D5785C1D1B842C0011310C /* SelectPage.cpp */; };
 		B4D578611D1B854C0011310C /* SimplePage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B4D5785F1D1B854C0011310C /* SimplePage.cpp */; };
@@ -170,6 +171,8 @@
 		B49C9F181D1ACBD800F9108B /* EachLineListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EachLineListView.h; sourceTree = "<group>"; };
 		B49C9F191D1ACBD800F9108B /* EachLineWidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EachLineWidget.cpp; sourceTree = "<group>"; };
 		B49C9F1A1D1ACBD800F9108B /* EachLineWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EachLineWidget.h; sourceTree = "<group>"; };
+		B4BF4CA91D20C0C30015A0AF /* UTF8World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UTF8World.cpp; sourceTree = "<group>"; };
+		B4BF4CAA1D20C0C30015A0AF /* UTF8World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTF8World.h; sourceTree = "<group>"; };
 		B4D578591D1B73330011310C /* CSVDefaultKeyConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSVDefaultKeyConfig.cpp; sourceTree = "<group>"; };
 		B4D5785A1D1B73330011310C /* CSVDefaultKeyConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSVDefaultKeyConfig.h; sourceTree = "<group>"; };
 		B4D5785C1D1B842C0011310C /* SelectPage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SelectPage.cpp; sourceTree = "<group>"; };
@@ -329,6 +332,8 @@
 				B4D5785A1D1B73330011310C /* CSVDefaultKeyConfig.h */,
 				B49C9F151D1ACBD800F9108B /* CSVGlobalConfig.cpp */,
 				B49C9F161D1ACBD800F9108B /* CSVGlobalConfig.h */,
+				B4BF4CA91D20C0C30015A0AF /* UTF8World.cpp */,
+				B4BF4CAA1D20C0C30015A0AF /* UTF8World.h */,
 				B49C9F131D1ACBD800F9108B /* createNewCSVScene.cpp */,
 				B49C9F141D1ACBD800F9108B /* createNewCSVScene.h */,
 				B49C9F171D1ACBD800F9108B /* EachLineListView.cpp */,
@@ -549,6 +554,7 @@
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				B4D5785B1D1B73330011310C /* CSVDefaultKeyConfig.cpp in Sources */,
 				B4EA830E1D1CD29100729251 /* MainScene.cpp in Sources */,
+				B4BF4CAB1D20C0C30015A0AF /* UTF8World.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				B49C9F1F1D1ACBD800F9108B /* EachLineWidget.cpp in Sources */,
 				B49C9F1D1D1ACBD800F9108B /* CSVGlobalConfig.cpp in Sources */,

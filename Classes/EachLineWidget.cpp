@@ -9,6 +9,7 @@
 #include "EachLineWidget.h"
 #include "SimplePage.h"
 #include "SelectPage.h"
+#include "UTF8World.h"
 
 EachLineWiget * EachLineWiget::createWithButtonTitle( std::vector<std::string> buttonTitleOption,int newIndex)
 {
@@ -122,7 +123,7 @@ void EachLineWiget::initButton()
     
     auto buttonUp=cocos2d::ui::Button::create("button.png");
     buttonUp->setScale9Enabled(true);
-    buttonUp->setTitleText("向上");
+    buttonUp->setTitleText(UTF8World::getInstance()->getWorld(6));
     buttonUp->setTitleFontSize(25);
     buttonUp->setTitleColor(Color3B::ORANGE);
     buttonUp->setPosition(Vec2( buttonNumber*buttonWidth+buttonWidth/2+20,buttonHeight/2));
@@ -134,7 +135,7 @@ void EachLineWiget::initButton()
     
     auto buttonClose=cocos2d::ui::Button::create("button.png");
     buttonClose->setScale9Enabled(true);
-    buttonClose->setTitleText("删除");
+    buttonClose->setTitleText(UTF8World::getInstance()->getWorld(7));
     buttonClose->setTitleFontSize(25);
     buttonClose->setTitleColor(Color3B::RED);
     buttonClose->setPosition(Vec2(buttonUp->getPositionX()+85,buttonHeight/2));
@@ -146,7 +147,7 @@ void EachLineWiget::initButton()
     
     auto buttonDown=cocos2d::ui::Button::create("button.png");
     buttonDown->setScale9Enabled(true);
-    buttonDown->setTitleText("向下");
+    buttonDown->setTitleText(UTF8World::getInstance()->getWorld(8));
     buttonDown->setTitleFontSize(25);
     buttonDown->setTitleColor(Color3B::BLUE);
     buttonDown->setPosition(Vec2(buttonClose->getPositionX()+85,buttonHeight/2));

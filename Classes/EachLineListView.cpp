@@ -8,6 +8,7 @@
 
 #include "EachLineListView.h"
 #include "MainScene.h"
+#include "UTF8World.h"
 
 EachLineListVew * EachLineListVew::createWithFileName(const std::string& fileName,const std::string& dirName)
 {
@@ -47,7 +48,7 @@ bool EachLineListVew::initWithFileName(const std::string& fileName,  const std::
     button->setTitleColor(Color3B::YELLOW);
     button->setScale9Enabled(true);
     button->setContentSize(Size(200,50));
-    button->setTitleText("增加新行");
+    button->setTitleText(UTF8World::getInstance()->getWorld(3));
     button->setPositionX(120);
     button->setPositionY(60);
     button->addClickEventListener(CC_CALLBACK_1(EachLineListVew::onButtonClickToAddLine, this));
@@ -65,7 +66,7 @@ bool EachLineListVew::initWithFileName(const std::string& fileName,  const std::
     button2->setTitleFontSize(30);
     button2->setScale9Enabled(true);
     button2->setContentSize(Size(200,50));
-    button2->setTitleText("保存文件");
+    button2->setTitleText(UTF8World::getInstance()->getWorld(4));
     button2->setPositionX(800);
     button2->setPositionY(60);
     button2->addClickEventListener(CC_CALLBACK_1(EachLineListVew::onButtonClickToSaveCSVFile, this));
@@ -77,7 +78,7 @@ bool EachLineListVew::initWithFileName(const std::string& fileName,  const std::
     button3->setTitleColor(Color3B::RED);
     button3->setScale9Enabled(true);
     button3->setContentSize(Size(280,50));
-    button3->setTitleText("返回("+currentDirName+")");
+    button3->setTitleText(UTF8World::getInstance()->getWorld(5)+currentDirName);
     button3->setPositionX(1100);
     button3->setPositionY(60);
     button3->addClickEventListener([&](Ref * sender){

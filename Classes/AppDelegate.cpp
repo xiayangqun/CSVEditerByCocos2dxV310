@@ -2,6 +2,7 @@
 #include "CSVGlobalConfig.h"
 #include "CSVDefaultKeyConfig.h"
 #include "MainScene.h"
+#include "UTF8World.h"
 
 USING_NS_CC;
 
@@ -67,7 +68,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     CSVGlobalConfig::getInstance();
     CSVDefaultKeyConfig::getInstance();
-    
+    UTF8World::getInstance();
     
     //auto ret=CSVGlobalConfig::getInstance()->getSubFileNameByFullPath(wirtePath);
     

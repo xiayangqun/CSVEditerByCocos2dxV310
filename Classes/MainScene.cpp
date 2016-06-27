@@ -8,6 +8,7 @@
 
 #include "MainScene.h"
 #include "createNewCSVScene.h"
+#include "UTF8World.h"
 
 MainScene * MainScene::create(const std::string& dirName /*=""*/)
 {
@@ -52,7 +53,7 @@ bool MainScene::init(const std::string& dirName)
     dirNameText=rootNode->getChildByName<ui::Text *>("dirNameText");
     
     auto writePath=FileUtils::getInstance()->getWritablePath();
-    auto pathStr="文件的根目录是："+ writePath;
+    auto pathStr=UTF8World::getInstance()->getWorld(2)+ writePath;
     path->setString(pathStr);
     
     
@@ -87,7 +88,7 @@ void MainScene::changeDirName(const std::string& changedName)
     if(CSVGlobalConfig::getInstance()->openDirAndReadGlobalConfig(changedName))
     {
         currentDirName=changedName;
-        dirNameText->setString("当前文件夹："+changedName);
+        dirNameText->setString(UTF8World::getInstance()->getWorld(1)+changedName);
         CSVDefaultKeyConfig::getInstance()->changeDirName(changedName);
         auto fullPathDir=FileUtils::getInstance()->getWritablePath()+changedName;
         FileVector=CSVGlobalConfig::getInstance()->getSubFileNameByFullPath(fullPathDir);
