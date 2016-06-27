@@ -96,15 +96,14 @@ bool MainScene::init(const std::string& dirName)
 
 void MainScene::changeCSVSplit(const char splitChar/* =','*/)
 {
-    if(splitChar!=',')
-    {
+    
         CSVGlobalConfig::getInstance()->currentSplitChar=splitChar;
          auto fullPathForCSVSplitCharTxt=FileUtils::getInstance()->getWritablePath()+currentDirName+"/"+"CSVSpiltChar.txt";
         std::string csvString;
         csvString.push_back(splitChar);
         FileUtils::getInstance()->writeStringToFile(csvString, fullPathForCSVSplitCharTxt);
         MessageBox("修改成功", "提示");
-    }
+    
 }
 
 void MainScene::onButtonClickToEditSplitChar(Ref * sender)
