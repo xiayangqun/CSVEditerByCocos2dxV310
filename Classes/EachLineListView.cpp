@@ -57,7 +57,7 @@ bool EachLineListVew::initWithFileName(const std::string& fileName,  const std::
     
     fileNameEditBox=ui::EditBox::create(Size(450,50), Scale9Sprite::create("button.png"));
     fileNameEditBox->setPosition(Vec2(470,60));
-    fileNameEditBox->setPlaceHolder("在这里输入保存的文件名");
+    fileNameEditBox->setPlaceHolder( UTF8World::getInstance()->getWorld(9).c_str()  );
     addChild(fileNameEditBox);
     
     

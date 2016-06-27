@@ -48,6 +48,9 @@
     <ClCompile Include="..\Classes\SimplePage.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\UTF8World.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -90,6 +93,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\unistd.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UTF8World.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
