@@ -22,6 +22,8 @@ public:
     static CSVGlobalConfig * getInstance();
     virtual ~CSVGlobalConfig();
     
+    char currentSplitChar;
+    
 protected:
     static CSVGlobalConfig * instance;
     CSVGlobalConfig();

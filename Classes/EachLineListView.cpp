@@ -92,7 +92,7 @@ bool EachLineListVew::initWithFileName(const std::string& fileName,  const std::
         if(FileUtils::getInstance()->isFileExist(fullFileName))
         {
             CCSVParse pr;
-            pr.openFile(fullFileName.c_str());
+            pr.openFile(fullFileName.c_str(),CSVGlobalConfig::getInstance()->currentSplitChar);
             
             for(int i=0;i<pr.data.size();i++)
             {

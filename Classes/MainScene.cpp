@@ -48,6 +48,8 @@ bool MainScene::init(const std::string& dirName)
     
     searchDir=rootNode->getChildByName<ui::TextField *>("searchDir");
     searchFile=rootNode->getChildByName<ui::TextField *>("searchFile");
+    spliteTextFiled=rootNode->getChildByName<ui::TextField *>("splitTextFiled");
+    
     
     path=rootNode->getChildByName<ui::Text *>("path");
     dirNameText=rootNode->getChildByName<ui::Text *>("dirNameText");
@@ -60,14 +62,21 @@ bool MainScene::init(const std::string& dirName)
     searchDir->addEventListener(CC_CALLBACK_2(MainScene::onTextFieldChange, this));
     searchFile->addEventListener(CC_CALLBACK_2(MainScene::onTextFieldChange, this));
     rootNode->getChildByName<ui::Button *>("addFile")->addClickEventListener(CC_CALLBACK_1(MainScene::onButtonClickToNewFile, this));
+    
+    rootNode->getChildByName<ui::Button *>("buttoSplite")->addClickEventListener(CC_CALLBACK_1(MainScene::onButtonClickToEditSplitChar, this));
 
+    
+   
+    
+    
+    
     //设置文件夹button
     DirVector=CSVGlobalConfig::getInstance()->getSubFileNameByFullPath(writePath);
     for(auto& dirName : DirVector)
     {
         auto button=ui::Button::create("button.png");
         button->setScale9Enabled(true);
-        button->setContentSize(Size(500,40));
+        button->setContentSize(Size(400,40));
         button->setTitleColor(Color3B::YELLOW);
         button->setTitleFontSize(30);
         button->setTitleText(dirName);
@@ -79,9 +88,44 @@ bool MainScene::init(const std::string& dirName)
     if(currentDirName!="")
         changeDirName(currentDirName);
     
+    
+  
 
     return true;
 }
+
+void MainScene::changeCSVSplit(const char splitChar/* =','*/)
+{
+    if(splitChar!=',')
+    {
+        CSVGlobalConfig::getInstance()->currentSplitChar=splitChar;
+         auto fullPathForCSVSplitCharTxt=FileUtils::getInstance()->getWritablePath()+currentDirName+"/"+"CSVSpiltChar.txt";
+        std::string csvString;
+        csvString.push_back(splitChar);
+        FileUtils::getInstance()->writeStringToFile(csvString, fullPathForCSVSplitCharTxt);
+        MessageBox("修改成功", "提示");
+    }
+}
+
+void MainScene::onButtonClickToEditSplitChar(Ref * sender)
+{
+    if(currentDirName=="")
+    {
+        MessageBox("请先选择编辑的文件夹", "出错了");
+        return;
+    }
+    
+    auto CSVSplitString=spliteTextFiled->getString();
+    if(CSVSplitString.size()!=1)
+    {
+        MessageBox("文件分隔符必须是长度为1的字符", "出错了");
+        return;
+    }
+
+    changeCSVSplit(CSVSplitString[0]);
+
+}
+
 
 void MainScene::changeDirName(const std::string& changedName)
 {
@@ -107,6 +151,33 @@ void MainScene::changeDirName(const std::string& changedName)
             listViewFile->pushBackCustomItem(button);
         }
          searchFile->setString("");
+        
+        //设置文件分隔符
+        auto fullPathForCSVSplitCharTxt=FileUtils::getInstance()->getWritablePath()+currentDirName+"/"+"CSVSpiltChar.txt";
+        if(FileUtils::getInstance()->isFileExist(fullPathForCSVSplitCharTxt))
+        {
+            //存在
+            auto string=FileUtils::getInstance()->getInstance()->getStringFromFile(fullPathForCSVSplitCharTxt);
+            if(string.size()!=1)
+            {
+                MessageBox("当前文件夹下的CSV分隔符长度不是1,采用默认的文件分隔符','", "提示");
+                CSVGlobalConfig::getInstance()->currentSplitChar=',';
+                spliteTextFiled->setString(",");
+            }
+            else
+            {
+                CSVGlobalConfig::getInstance()->currentSplitChar=string[0];
+                spliteTextFiled->setString(string);
+            }
+        }
+        else
+        {
+            CSVGlobalConfig::getInstance()->currentSplitChar=',';
+            spliteTextFiled->setString(",");
+        }
+
+        
+        
     }
 }
 
@@ -173,7 +244,7 @@ void MainScene::onTextFieldChange(Ref * sender, ui::TextField::EventType ty)
         {
             auto button=ui::Button::create("button.png");
             button->setScale9Enabled(true);
-            button->setContentSize(Size(500,40));
+            button->setContentSize(Size(400,40));
             button->setTitleColor(Color3B::YELLOW);
             button->setTitleFontSize(30);
             button->setTitleText(dirName);

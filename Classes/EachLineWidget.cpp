@@ -50,12 +50,12 @@ std::string  EachLineWiget::getLineOptionString()
 {
     
     static char c[20];
-    sprintf(c, "%d,",index);
+    sprintf(c, "%d%c", index, CSVGlobalConfig::getInstance()->currentSplitChar);
     
     std::string lineString(c);
     for(auto& string : buttonValuesNames)
     {
-        lineString=lineString+string+',';
+        lineString=lineString+string+CSVGlobalConfig::getInstance()->currentSplitChar;
     }
     lineString.pop_back();
     lineString.push_back('\r');

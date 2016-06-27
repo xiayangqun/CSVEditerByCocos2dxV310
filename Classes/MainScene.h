@@ -41,6 +41,7 @@ protected:
     
     void onButtonClickToEditFile(Ref * sender);
     void onButtonClickToNewFile(Ref * sender);
+    void onButtonClickToEditSplitChar(Ref * sender);
     
     //tag:1 是SearchDir . tag:2 是SearchFile
     void onTextFieldChange(Ref * sender, ui::TextField::EventType ty);
@@ -54,10 +55,14 @@ protected:
     
     ui::TextField * searchDir;
     ui::TextField * searchFile;
+    ui::TextField * spliteTextFiled;
+    
     
     ui::Text * dirNameText;
     ui::Text * path;
     
+    
+    void changeCSVSplit(const char splitChar=',');
     
 };
 

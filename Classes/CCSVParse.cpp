@@ -53,58 +53,58 @@ void CCSVParse::StringSplit( const string& str, vector<string>& tokens, const ch
 }
 
 
-void CCSVParse::split( vector<string>& field, string line )
-{
-    string fld;
-    unsigned int i,j=0;
-    
-    if( line.length() ==0 )
-        return;
-    i=0;
-    
-    do
-    {
-        if(j<line.length() && line[i]=='"')
-            j = advquoted(line, fld, ++i);
-        else
-            j = advplain(line, fld, i);
-        
-        field.push_back(fld);
-        i = j+1;
-    } while (j<line.length());
-}
+//void CCSVParse::split( vector<string>& field, string line )
+//{
+//    string fld;
+//    unsigned int i,j=0;
+//    
+//    if( line.length() ==0 )
+//        return;
+//    i=0;
+//    
+//    do
+//    {
+//        if(j<line.length() && line[i]=='"')
+//            j = advquoted(line, fld, ++i);
+//        else
+//            j = advplain(line, fld, i);
+//        
+//        field.push_back(fld);
+//        i = j+1;
+//    } while (j<line.length());
+//}
+//
 
-
-
-int CCSVParse::advplain( const string& s, string& fld, int i)
-{
-    unsigned int j;
-    j = s.find_first_of(fieldsep, i);
-    if(j>s.length())
-        j=s.length();
-    fld = string(s,i,j-i);
-    return j;
-}
-
-int CCSVParse::advquoted( const string& s, string& fld, int i)
-{
-    unsigned int j;
-    fld = "";
-    for (j=i; j<s.length(); ++j)
-    {
-        if(s[j]=='"' && s[++j]!='"')
-        {
-            unsigned int k = s.find_first_of(fieldsep, j);
-            if(k>s.length())
-                k = s.length();
-            for(k-=j; k-->0;)
-                fld += s[j++];
-            break;
-        }
-        fld += s[j];
-    }
-    return j;
-}
+//
+//int CCSVParse::advplain( const string& s, string& fld, int i)
+//{
+//    unsigned int j;
+//    j = s.find_first_of(fieldsep, i);
+//    if(j>s.length())
+//        j=s.length();
+//    fld = string(s,i,j-i);
+//    return j;
+//}
+//
+//int CCSVParse::advquoted( const string& s, string& fld, int i)
+//{
+//    unsigned int j;
+//    fld = "";
+//    for (j=i; j<s.length(); ++j)
+//    {
+//        if(s[j]=='"' && s[++j]!='"')
+//        {
+//            unsigned int k = s.find_first_of(fieldsep, j);
+//            if(k>s.length())
+//                k = s.length();
+//            for(k-=j; k-->0;)
+//                fld += s[j++];
+//            break;
+//        }
+//        fld += s[j];
+//    }
+//    return j;
+//}
 
 //bool CCSVParse::openFileNoJiami(const char *fileName)
 //{
@@ -144,7 +144,7 @@ int CCSVParse::advquoted( const string& s, string& fld, int i)
 //}
 
 //解析 CVS 文件
-bool CCSVParse::openFile( const char* fileName )
+bool CCSVParse::openFile( const char* fileName, const char splitChar /*=','*/ )
 {
     bool isOpend = true;
     data.clear();
@@ -168,7 +168,7 @@ bool CCSVParse::openFile( const char* fileName )
     for(unsigned int i=0; i<line.size(); ++i)
     {
         vector<string> closVec;
-        StringSplit(line[i], closVec, ',');
+        StringSplit(line[i], closVec, splitChar);
         data.push_back(closVec);
     }
     return isOpend;
