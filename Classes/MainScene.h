@@ -32,13 +32,15 @@ protected:
     bool init(const std::string& dirName="");
     
     void changeDirName(const std::string& changedName);
-    void onButtonClickToChangeDir(Ref * sender);
+    void changeCSVSplit(const char splitChar=',');
+    
     
     std::vector<std::string> findHitString(const std::vector<std::string>&comperVec,   std::string  comperChar);
     
     
     std::string currentDirName;
     
+    void onButtonClickToChangeDir(Ref * sender);
     void onButtonClickToEditFile(Ref * sender);
     void onButtonClickToNewFile(Ref * sender);
     void onButtonClickToEditSplitChar(Ref * sender);
@@ -62,7 +64,7 @@ protected:
     ui::Text * path;
     
     
-    void changeCSVSplit(const char splitChar=',');
+
     
 };
 

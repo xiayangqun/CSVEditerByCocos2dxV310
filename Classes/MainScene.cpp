@@ -61,14 +61,10 @@ bool MainScene::init(const std::string& dirName)
     
     searchDir->addEventListener(CC_CALLBACK_2(MainScene::onTextFieldChange, this));
     searchFile->addEventListener(CC_CALLBACK_2(MainScene::onTextFieldChange, this));
-    rootNode->getChildByName<ui::Button *>("addFile")->addClickEventListener(CC_CALLBACK_1(MainScene::onButtonClickToNewFile, this));
     
+    rootNode->getChildByName<ui::Button *>("addFile")->addClickEventListener(CC_CALLBACK_1(MainScene::onButtonClickToNewFile, this));
     rootNode->getChildByName<ui::Button *>("buttoSplite")->addClickEventListener(CC_CALLBACK_1(MainScene::onButtonClickToEditSplitChar, this));
 
-    
-   
-    
-    
     
     //设置文件夹button
     DirVector=CSVGlobalConfig::getInstance()->getSubFileNameByFullPath(writePath);
@@ -83,27 +79,23 @@ bool MainScene::init(const std::string& dirName)
         button->addClickEventListener(CC_CALLBACK_1(MainScene::onButtonClickToChangeDir,this));
         listViewDir->pushBackCustomItem(button);
     }
-    currentDirName=dirName;
     
+    currentDirName=dirName;
     if(currentDirName!="")
         changeDirName(currentDirName);
     
     
-  
-
     return true;
 }
 
 void MainScene::changeCSVSplit(const char splitChar/* =','*/)
 {
-    
         CSVGlobalConfig::getInstance()->currentSplitChar=splitChar;
          auto fullPathForCSVSplitCharTxt=FileUtils::getInstance()->getWritablePath()+currentDirName+"/"+"CSVSpiltChar.txt";
         std::string csvString;
         csvString.push_back(splitChar);
         FileUtils::getInstance()->writeStringToFile(csvString, fullPathForCSVSplitCharTxt);
         MessageBox("修改成功", "提示");
-    
 }
 
 void MainScene::onButtonClickToEditSplitChar(Ref * sender)
@@ -122,7 +114,6 @@ void MainScene::onButtonClickToEditSplitChar(Ref * sender)
     }
 
     changeCSVSplit(CSVSplitString[0]);
-
 }
 
 
@@ -174,9 +165,6 @@ void MainScene::changeDirName(const std::string& changedName)
             CSVGlobalConfig::getInstance()->currentSplitChar=',';
             spliteTextFiled->setString(",");
         }
-
-        
-        
     }
 }
 

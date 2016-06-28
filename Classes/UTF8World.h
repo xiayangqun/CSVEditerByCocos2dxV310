@@ -24,9 +24,6 @@ protected:
     static UTF8World * instance;
     UTF8World();
 
-
-    
-    
 };
 
 

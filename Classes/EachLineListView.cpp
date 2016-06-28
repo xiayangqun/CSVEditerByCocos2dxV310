@@ -196,5 +196,7 @@ std::string EachLineListVew::getCSVString()
         retStr=retStr+item->getLineOptionString();
     }
     
+    retStr.pop_back();
+    
     return retStr;
 }
